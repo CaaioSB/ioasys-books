@@ -1,9 +1,5 @@
-function App() {
-  return (
-    <div className="App">
-      ioasys-books-frontend
-    </div>
-  );
+const App = () => {
+  return <div className='App'>ioasys-books-frontend</div>
 }
 
-export default App;
+export default App
