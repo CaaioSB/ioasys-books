@@ -1,5 +1,12 @@
+import { useState } from 'react'
+
+import AuthenticatedApp from './AuthenticatedApp'
+import UnauthenticatedApp from './UnauthenticatedApp'
+
 const App = () => {
-  return <div className='App'>ioasys-books-frontend</div>
+  const [isLogged] = useState(false)
+
+  return <div className='App'>{isLogged ? <AuthenticatedApp /> : <UnauthenticatedApp />}</div>
 }
 
 export default App
