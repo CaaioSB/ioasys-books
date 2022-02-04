@@ -1,5 +1,16 @@
-import { UserProvider } from './user-context'
+import PropTypes from 'prop-types'
 
-const AppProviders = children => <UserProvider>{children}</UserProvider>
+import { UserProvider } from './user-context'
+import { AuthProvider } from './auth-context'
+
+const AppProviders = ({ children }) => (
+  <UserProvider>
+    <AuthProvider>{children}</AuthProvider>
+  </UserProvider>
+)
+
+AppProviders.propTypes = {
+  children: PropTypes.node
+}
 
 export default AppProviders

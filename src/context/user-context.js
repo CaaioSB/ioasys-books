@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 
 const UserContext = createContext()
@@ -12,8 +12,10 @@ const useUser = () => {
 }
 
 const UserProvider = ({ children, ...props }) => {
+  const [user, setUser] = useState(null)
+
   return (
-    <UserContext.Provider value={{}} {...props}>
+    <UserContext.Provider value={{ user, setUser }} {...props}>
       {children}
     </UserContext.Provider>
   )
