@@ -1,0 +1,26 @@
+import { createContext, useContext } from 'react'
+import PropTypes from 'prop-types'
+
+const UserContext = createContext()
+
+const useUser = () => {
+  const context = useContext(UserContext)
+  if (context === undefined) {
+    throw new Error('useUser must be used within a UserProvider')
+  }
+  return context
+}
+
+const UserProvider = ({ children, ...props }) => {
+  return (
+    <UserContext.Provider value={{}} {...props}>
+      {children}
+    </UserContext.Provider>
+  )
+}
+
+UserProvider.propTypes = {
+  children: PropTypes.node
+}
+
+export { UserProvider, useUser }
