@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 
-import { useAuth } from './context/auth-context'
-import { useUser } from './context/user-context'
+import { useAuth } from '~/context/auth-context'
+import { useUser } from '~/context/user-context'
 
-import AuthenticatedApp from './AuthenticatedApp'
-import UnauthenticatedApp from './UnauthenticatedApp'
+import AuthenticatedApp from '~/AuthenticatedApp'
+import UnauthenticatedApp from '~/UnauthenticatedApp'
 
 import 'react-toastify/dist/ReactToastify.css'
 

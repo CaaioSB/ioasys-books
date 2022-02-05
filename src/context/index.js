@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
-import { UserProvider } from './user-context'
-import { AuthProvider } from './auth-context'
+import { UserProvider } from '~/context/user-context'
+import { AuthProvider } from '~/context/auth-context'
 
 const AppProviders = ({ children }) => (
   <UserProvider>

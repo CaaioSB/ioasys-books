@@ -2,9 +2,9 @@ import { createContext, useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { toast } from 'react-toastify'
 
-import { login } from '../services/auth'
+import { login } from '~/services/auth'
 
-import { useUser } from './user-context'
+import { useUser } from '~/context/user-context'
 
 const AuthContext = createContext()
 
