@@ -1,24 +1,23 @@
-import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Tooltip = ({ children, label, ...props }) => {
+const Tooltip = ({ children, label }) => {
   return (
     <StyledToolTip>
       {children}
-      <ToolTipText>{label}</ToolTipText>
+      <ToolTipText visible={!!label}>{label}</ToolTipText>
     </StyledToolTip>
   )
 }
 
 const StyledToolTip = styled.div`
-  width: inherit;
+  width: 100%;
   position: relative;
   display: inline-block;
 `
 
 const ToolTipText = styled.span`
-  visibility: visible;
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(2px);
   border-radius: 4px;
