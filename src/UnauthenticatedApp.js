@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import Signin from '~/routes/Signin/Signin'
+
 const UnauthenticatedApp = () => (
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<p>Login Page</p>} />
+      <Route path='/signin' element={<Signin />} />
       <Route path='*' element={<p>404</p>} />
     </Routes>
   </BrowserRouter>
