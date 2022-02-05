@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { createGlobalStyle } from 'styled-components'
 
-import { useAuth } from '~/context/auth-context'
 import { useUser } from '~/context/user-context'
 
 import AuthenticatedApp from '~/AuthenticatedApp'
@@ -29,8 +27,6 @@ const GlobalStyle = createGlobalStyle`
   `
 
 const App = () => {
-  const [isLogged] = useState(false)
-  const { authenticate } = useAuth()
   const { user } = useUser()
 
   return (
