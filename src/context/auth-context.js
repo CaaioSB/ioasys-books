@@ -1,10 +1,12 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { toast } from 'react-toastify'
 
-import { login } from '~/services/auth'
+import { login, refresh } from '~/services/auth'
 
 import { useUser } from '~/context/user-context'
+
+import { setAuthorization, setRefreshToken, setUserData, getRefreshToken, getUserData } from '~/helpers/localStorage'
 
 const AuthContext = createContext()
 
@@ -18,8 +20,35 @@ const useAuth = () => {
 
 const AuthProvider = ({ children, ...props }) => {
   const { setUser } = useUser()
-  const [authorization, setAuthorization] = useState(null)
-  const [refreshToken, setRefreshToken] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    refreshToken()
+  }, [])
+
+  const refreshToken = async () => {
+    setIsLoading(true)
+    const currentRefreshToken = getRefreshToken()
+    const currentUserData = getUserData()
+
+    if (currentRefreshToken && currentUserData) {
+      try {
+        const {
+          headers: { authorization, 'refresh-token': refreshToken }
+        } = await refresh(currentRefreshToken)
+
+        setAuthorization(authorization)
+        setRefreshToken(refreshToken)
+        setUser(currentUserData)
+      } catch ({ response }) {
+        toast.error(response.data.errors.message)
+      }
+    } else {
+      reset()
+    }
+
+    setIsLoading(false)
+  }
 
   const authenticate = async data => {
     try {
@@ -29,15 +58,33 @@ const AuthProvider = ({ children, ...props }) => {
       } = await login(data)
 
       setUser(userData)
+      setUserData({
+        id: userData.id,
+        name: userData.name,
+        email: userData.email,
+        gender: userData.gender,
+        birthdata: userData.birthdata
+      })
       setAuthorization(authorization)
       setRefreshToken(refreshToken)
-    } catch (ex) {
-      toast.error('Ops... Ocorreu um erro ao realizar a autenticação. Tente novamente mais tarde.')
+    } catch (error) {
+      if (error.status === 401) {
+        return error
+      }
+
+      toast.error(error.data.errors.message)
     }
   }
 
+  const reset = () => {
+    setAuthorization(null)
+    setRefreshToken(null)
+    setUserData(null)
+    setUser(null)
+  }
+
   return (
-    <AuthContext.Provider value={{ authorization, refreshToken, authenticate }} {...props}>
+    <AuthContext.Provider value={{ authenticate, isLoading }} {...props}>
       {children}
     </AuthContext.Provider>
   )
