@@ -36,6 +36,8 @@
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
     "prettier/prettier": "error",
-    "space-before-function-paren": 0
+    "space-before-function-paren": 0,
+    "import/export": "off",
+    "import/no-unresolved": "off"
   }
 }
