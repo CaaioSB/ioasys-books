@@ -9,6 +9,7 @@ Front-end challenge to demonstrate my capabilities with React.
   - [x] Fixed on iOS Safari.
   - [x] Fixed on MacOS Google Chrome.
   - [x] Fixed on MacOS Safari.
+- [ ] When the "alt" text of the image is displayed, the width of the "img" element breaks the page.
 
 ## Found a bug?
 
