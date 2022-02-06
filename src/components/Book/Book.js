@@ -7,7 +7,7 @@ import Text from '~/components/Text'
 const Book = ({ title, imageUrl, authors, pageCount, publisher, published }) => {
   return (
     <StyledBox height={160} display='flex' padding='19px 16px'>
-      <img src={imageUrl} alt={`Capa do livro ${title}`} />
+      <img src={imageUrl} alt={`Capa do livro ${title}`} width='110px' />
       <Box display='flex' flexDirection='column' justifyContent='space-between' ml={16} overflow='auto'>
         <Box>
           <Text variant='small' fontWeight={500}>
