@@ -16,7 +16,7 @@
   <h3 align="center">ioasys - desafio-books-frontend</h3>
 
   <p align="center">
-    <a href="ioasys.caiosb.com">View</a>
+    <a href="https://ioasys.caiosb.com">View</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Bug Report</a>
     ·
@@ -75,6 +75,6 @@ Just open a PR following the code pattern or contact: contato@caiosb.com
 [license-shield]: https://img.shields.io/github/license/CaaioSB/ioasys-books?style=flat-square
 [license-url]: https://github.com/CaaioSB/ioasys-books/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: caiosb.com/linkedin
+[linkedin-url]: https://caiosb.com/linkedin
 [email-shield]: https://img.shields.io/badge/Email-Email?style=flat-square&logo=microsoft-outlook&colorB=555
 [email-url]: mailto:contato@caiosb.com
