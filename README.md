@@ -25,7 +25,7 @@
 </p>
 
 <!-- TABLE OF CONTENTS -->
-## Sumário
+## Sumary
 
 * [About the project](#about-the-project)
   * [Technologies](#technologies-and-tools)
