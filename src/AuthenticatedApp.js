@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+import Home from '~/routes/Home'
+
 const AuthenticatedApp = () => (
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<p>Welcome to ioasys-books</p>} />
+      <Route path='/' element={<Home />} />
       <Route path='*' element={<p>404</p>} />
     </Routes>
   </BrowserRouter>
