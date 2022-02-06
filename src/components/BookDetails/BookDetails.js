@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FiX } from 'react-icons/fi'
+import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 
 import Box from '~/components/Box'
@@ -54,7 +55,7 @@ const BookDetails = ({
         margin={isMobile ? '50px 210px 16px 210px' : '80px 300px'}
         backgroundColor='white'
       >
-        <img width={isMobile && 280} src={imageUrl} alt='capa de um livro' />
+        <StyledImg width={isMobile && 280} src={imageUrl} alt='capa de um livro' />
         <Box ml={!isMobile && 48} mt={isMobile && '24px'}>
           <Text
             width={280}
@@ -145,6 +146,10 @@ const BookDetails = ({
     </Box>
   )
 }
+
+const StyledImg = styled.img`
+  filter: drop-shadow(0px 6px 9px rgba(0, 0, 0, 0.15));
+`
 
 BookDetails.propTypes = {
   isOpen: PropTypes.bool.isRequired,
