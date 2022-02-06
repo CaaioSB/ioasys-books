@@ -41,7 +41,8 @@ const AuthProvider = ({ children, ...props }) => {
         setRefreshToken(refreshToken)
         setUser(currentUserData)
       } catch ({ response }) {
-        toast.error(response.data.errors.message)
+        toast.error(response?.data?.errors?.message)
+        logout()
       }
     } else {
       logout()
