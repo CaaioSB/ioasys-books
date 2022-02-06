@@ -44,7 +44,7 @@ const AuthProvider = ({ children, ...props }) => {
         toast.error(response.data.errors.message)
       }
     } else {
-      reset()
+      logout()
     }
 
     setIsLoading(false)
@@ -76,15 +76,16 @@ const AuthProvider = ({ children, ...props }) => {
     }
   }
 
-  const reset = () => {
+  const logout = () => {
     setAuthorization(null)
     setRefreshToken(null)
     setUserData(null)
     setUser(null)
+    setIsLoading(false)
   }
 
   return (
-    <AuthContext.Provider value={{ authenticate, isLoading }} {...props}>
+    <AuthContext.Provider value={{ authenticate, logout, isLoading }} {...props}>
       {children}
     </AuthContext.Provider>
   )
