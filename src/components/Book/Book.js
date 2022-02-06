@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import Box from '~/components/Box'
 import Text from '~/components/Text'
 
-const Book = ({ title, imageUrl, authors, pageCount, publisher, published }) => {
+const Book = ({ title, imageUrl, authors, pageCount, publisher, published, ...props }) => {
   return (
-    <StyledBox height={160} display='flex' padding='19px 16px'>
+    <StyledBox height={160} display='flex' padding='19px 16px' {...props}>
       <img src={imageUrl} alt={`Capa do livro ${title}`} width='110px' />
       <Box display='flex' flexDirection='column' justifyContent='space-between' ml={16} overflow='auto'>
         <Box>
