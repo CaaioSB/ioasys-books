@@ -7,7 +7,7 @@ import Text from '~/components/Text'
 const Book = ({ title, imageUrl, authors, pageCount, publisher, published, ...props }) => {
   return (
     <StyledBox height={160} display='flex' padding='19px 16px' {...props}>
-      <img src={imageUrl} alt={`Capa do livro ${title}`} width='110px' />
+      <StyledImg src={imageUrl} alt={`Capa do livro ${title}`} width='110px' />
       <Box display='flex' flexDirection='column' justifyContent='space-between' ml={16} overflow='auto'>
         <Box>
           <Text variant='small' fontWeight={500}>
@@ -62,6 +62,10 @@ const StyledBox = styled(Box)`
   background: #ffffff;
   box-shadow: 0px 6px 24px rgba(84, 16, 95, 0.13);
   border-radius: 4px;
+`
+
+const StyledImg = styled.img`
+  filter: drop-shadow(0px 6px 9px rgba(0, 0, 0, 0.15));
 `
 
 Book.propTypes = {
