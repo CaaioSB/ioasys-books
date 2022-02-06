@@ -8,21 +8,23 @@ import Book from '~/components/Book'
 import Text from '~/components/Text'
 import Grid from '~/components/Grid'
 import IconButton from '~/components/IconButton'
+import BookDetails from '~/components/BookDetails'
 
 import { useAuth } from '~/context/auth-context'
 import { useUser } from '~/context/user-context'
 
-import { useDeviceDetect } from '~/hooks'
+import { requestListFromBooks, requestObjectFromBooks } from '~/services/books'
 
 import shadow from '~/assets/images/shadow.jpeg'
 import ioasys from '~/assets/svgs/ioasys-black.svg'
-import { requestListFromBooks } from '../../services/books'
 
 const Home = () => {
   const [books, setBooks] = useState([])
+  const [selectedBook, setSelectedBook] = useState({})
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
+  const [isBookDetailsOpen, setIsBookDetailsOpen] = useState(false)
 
   const { logout } = useAuth()
   const {
@@ -50,6 +52,19 @@ const Home = () => {
 
     fetchBooks()
   }, [currentPage])
+
+  const fetchBook = async bookId => {
+    try {
+      const { data } = await requestObjectFromBooks(bookId)
+
+      setSelectedBook(data)
+      setIsBookDetailsOpen(true)
+    } catch {
+      setSelectedBook({})
+      setIsBookDetailsOpen(false)
+      toast.error('Não foi possível obter os detalhes do livro. Tente novamente mais tarde.')
+    }
+  }
 
   const handleNextPage = () => setCurrentPage(curr => curr + 1)
 
@@ -92,25 +107,34 @@ const Home = () => {
         >
           {isLoading &&
             Array.from(Array(10).keys()).map(index => (
-              <ContentLoader key={`loading_skeleton${index}`} width='100%' minHeight='198px' height='198px'>
+              <ContentLoader key={`loading_skeleton${index}`} width='100%' height='198px'>
                 <rect x='0' y='0' width='100%' height='100%' />
               </ContentLoader>
             ))}
 
-          {!isLoading && books.map(book => <Book key={book.id} {...book} />)}
+          {!isLoading && books.map(book => <Book key={book.id} onClick={() => fetchBook(book.id)} {...book} />)}
         </Grid>
-        <Box mt={16} display='flex' alignItems='center' justifyContent='end'>
+        <Box mt={16} display='flex' alignItems='center' justifyContent={isMobile ? 'center' : 'end'}>
+          {isMobile && (
+            <IconButton mr={16} disabled={currentPage === 1 || isLoading} onClick={() => handlePreviousPage()}>
+              <FiChevronLeft />
+            </IconButton>
+          )}
           <Text>
             Página <b>{currentPage}</b> de <b>{totalPages}</b>
           </Text>
-          <IconButton ml={16} disabled={currentPage === 1 || isLoading} onClick={() => handlePreviousPage()}>
-            <FiChevronLeft />
-          </IconButton>
+          {!isMobile && (
+            <IconButton ml={16} disabled={currentPage === 1 || isLoading} onClick={() => handlePreviousPage()}>
+              <FiChevronLeft />
+            </IconButton>
+          )}
           <IconButton ml={16} disabled={currentPage === totalPages || isLoading} onClick={() => handleNextPage()}>
             <FiChevronRight />
           </IconButton>
         </Box>
       </Box>
+
+      <BookDetails isOpen={isBookDetailsOpen} onClose={() => setIsBookDetailsOpen(false)} {...selectedBook} />
     </Box>
   )
 }
