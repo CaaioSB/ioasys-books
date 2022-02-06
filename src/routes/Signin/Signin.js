@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
+import { useMediaQuery } from 'react-responsive'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import Box from '~/components/Box'
@@ -23,7 +24,7 @@ const Signin = () => {
     formState: { errors, isSubmitting }
   } = useForm({ resolver: yupResolver(SigninSchema) })
   const { authenticate } = useAuth()
-  const { isMobile } = useDeviceDetect()
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' })
   const [tooltipLabel, setTooltipLabel] = useState('')
 
   const onSubmit = async data => {

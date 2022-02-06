@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import { getAuthorization } from '~/helpers'
+
 const defaultOptions = {
   baseURL: 'https://books.ioasys.com.br/api'
 }
@@ -7,12 +9,17 @@ const defaultOptions = {
 const instance = axios.create(defaultOptions)
 
 instance.interceptors.request.use(config => {
+  const authorizationToken = getAuthorization()
+
+  console.log(authorizationToken)
+
   return {
     ...config,
     data: {
       ...config.data
     },
     headers: {
+      authorization: `Bearer ${authorizationToken}` || '',
       ...config.headers
     }
   }
