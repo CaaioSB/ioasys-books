@@ -72,11 +72,10 @@ const Home = () => {
 
   return (
     <Box
-      minHeight='100vh'
       backgroundSize='cover'
       backgroundPosition='center'
       backgroundImage={`url(${shadow})`}
-      padding={isMobile ? '40px 16px 88px 16px' : '40px 115px 88px 115px'}
+      padding={isMobile ? '40px 16px 80px 16px' : '40px 115px 80px 115px'}
     >
       <Box>
         <Box mb={40} display='flex' justifyContent='space-between' alignItems='center'>
