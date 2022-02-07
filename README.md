@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f0692aac-c3cd-4f26-848a-5c40bb8260a1/deploy-status)](https://app.netlify.com/sites/caiosb-ioasys-books/deploys)
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
