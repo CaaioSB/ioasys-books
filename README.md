@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f0692aac-c3cd-4f26-848a-5c40bb8260a1/deploy-status)](https://app.netlify.com/sites/caiosb-ioasys-books/deploys)
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -18,9 +19,9 @@
   <p align="center">
     <a href="https://ioasys.caiosb.com">View</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Bug Report</a>
+    <a href="https://github.com/CaaioSB/ioasys-books/issues/new">Bug Report</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Ask for a feature</a>
+    <a href="https://github.com/CaaioSB/ioasys-books/issues/new">Ask for a feature</a>
   </p>
 </p>
 
