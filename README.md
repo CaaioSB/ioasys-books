@@ -19,9 +19,9 @@
   <p align="center">
     <a href="https://ioasys.caiosb.com">View</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Bug Report</a>
+    <a href="https://github.com/CaaioSB/ioasys-books/issues/new">Bug Report</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Ask for a feature</a>
+    <a href="https://github.com/CaaioSB/ioasys-books/issues/new">Ask for a feature</a>
   </p>
 </p>
 
